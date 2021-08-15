@@ -19,7 +19,7 @@ function form(props) {
 
   const submitInputHandler = (event) => {
     event.preventDefault();
-    if (!router.pathname.includes('imc')) router.push("imc");
+    if (!router.pathname.includes("imc")) router.push("imc");
 
     ctxUser.submitForm({
       email: emailRef.current?.value || ctxUser.email,
@@ -48,13 +48,27 @@ function form(props) {
           {height && (
             <div>
               <label htmlFor="height">Altura (cm)</label>
-              <input type="number" id="height" required ref={heightRef} />
+              <input
+                type="number"
+                id="height"
+                required
+                ref={heightRef}
+                min="30"
+                max="250"
+              />
             </div>
           )}
           {weight && (
             <div>
               <label htmlFor="weight">Peso (kg)</label>
-              <input type="number" id="weight" required ref={weightRef} />
+              <input
+                type="number"
+                id="weight"
+                required
+                ref={weightRef}
+                min="1"
+                max="750"
+              />
             </div>
           )}
           {email && (
@@ -66,7 +80,14 @@ function form(props) {
           {password && (
             <div>
               <label htmlFor="passowrd">Password</label>
-              <input type="password" id="password" required ref={passwordRef} />
+              <input
+                type="password"
+                id="password"
+                required
+                ref={passwordRef}
+                minLength="6"
+                maxLength="21"
+              />
             </div>
           )}
           {check && (
