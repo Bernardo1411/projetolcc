@@ -1,12 +1,14 @@
 import { Fragment } from "react";
 import Link from "next/link";
 
+import styles from './layout.module.css';
+
 function Layout(props) {
   return (
     <Fragment>
-      <h1>Calculadora de IMC</h1>
-      <nav>
-        <ul>
+      <nav className={styles.main_header}>
+      <h1>IMC</h1>
+        <ul className={styles.nav_list}>
           <li>
             <Link href="/">
               <a>Home</a>
@@ -19,7 +21,7 @@ function Layout(props) {
           </li>
         </ul>
       </nav>
-      <main>{props.children}</main>
+      <main className={styles.main_page}>{props.children}</main>
       <footer>
         <h3>
           Receba nossas notificações e fique por dentro de todas as dicas sobre

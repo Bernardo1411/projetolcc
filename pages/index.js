@@ -1,28 +1,48 @@
 import { Fragment, useState } from "react";
 import ReactDOM from "react-dom";
+import Image from 'next/image';
 
 import Backdrop from "../ui/backdrop/backdrop";
 
-function Home() {
-const [openForm, setOpenForm] = useState(false);
+import styles from "../styles/Home.module.css";
 
-const openFormHandler = () => {
-  setOpenForm(currentState => !currentState)
-}
+function Home() {
+  const [openForm, setOpenForm] = useState(false);
+
+  const openFormHandler = () => {
+    setOpenForm((currentState) => !currentState);
+  };
 
   return (
     <Fragment>
-      <section>
-        <h1>Main Page</h1>
+      <section id={styles.introduction_section}>
+        <div className={styles.introduction_section_content}>
+          <h2>Você se sente saudável?</h2>
+          <p>
+            O IMC é a sigla para índice de massa corporal. Este índice serve
+            para avaliar se a pessoa está dentro do seu peso ideal em relação à
+            altura
+          </p>
+          <div className={styles.main_paragraph}>
+            <p>Acesse a nossa calculadora para saber o seu IMC:</p>
+            <a href="#secondery_content">
+            <Image src="/images/icon-157361_1280.png" width="150px" height="150px"/>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section id="secondery_content">
+        <div>Você está pronto para mudar seus hábitos?</div>
         <div>
           <h2>Pronto para calcular o seu IMC?</h2>
           <button onClick={openFormHandler}>Calcular</button>
         </div>
       </section>
-      <section>
-        <h1>Adjacent content</h1>
-      </section>
-      {openForm && ReactDOM.createPortal(<Backdrop/>, document.getElementById("backdropDestiny"))}
+      {openForm &&
+        ReactDOM.createPortal(
+          <Backdrop />,
+          document.getElementById("backdropDestiny")
+        )}
     </Fragment>
   );
 }
