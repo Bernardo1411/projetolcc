@@ -57,9 +57,9 @@
   color: #7a0a0a;
 }
 
-.extra_content div{
-    background-color: white;
-    padding: 0 15px;
-    border: black solid 20px;
-    background-color: rgb(255, 244, 223);
+.extra_content div {
+  background-color: white;
+  padding: 0 15px;
+  border: black solid 20px;
+  background-color: rgb(255, 244, 223);
 }
