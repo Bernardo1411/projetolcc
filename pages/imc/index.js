@@ -6,7 +6,7 @@ import Form from "../../components/form/form";
 
 import styles from "./imc.module.css";
 
-function imc() {
+function IMC() {
   const ctxUser = useContext(userContext);
   const router = useRouter();
 
@@ -57,4 +57,4 @@ function imc() {
   );
 }
 
-export default imc;
+export default IMC;

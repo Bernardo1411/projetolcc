@@ -5,7 +5,7 @@ import userContext from "../../store/user-context";
 
 import styles from "./form.module.css";
 
-function form(props) {
+function Form(props) {
   const { email, password, check, birthday, height, weight, title, message, showClose} = props;
 
   const emailRef = useRef();
@@ -121,4 +121,4 @@ function form(props) {
   );
 }
 
-export default form;
+export default Form;

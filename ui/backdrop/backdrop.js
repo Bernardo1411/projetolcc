@@ -3,7 +3,7 @@ import Form from "../../components/form/form";
 
 import styles from './backdrop.module.css';
 
-function backdrop(props) {
+function Backdrop(props) {
 
   const closeFormHandler = () => {
     props.closeForm();
@@ -18,4 +18,4 @@ function backdrop(props) {
   );
 }
 
-export default backdrop;
+export default Backdrop;
