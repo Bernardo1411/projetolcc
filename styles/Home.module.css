@@ -1,15 +1,15 @@
-#introduction_section{
+#introduction_section {
   display: flex;
-  height: 100%;
+  height: 55.5%;
   width: 100%;
   margin: 0;
   padding: 0;
-  background-image: url('../public/images/salad-2756467_1920.jpg');
+  background-image: url("../public/images/salad-2756467_1920.jpg");
   justify-content: flex-end;
   align-items: center;
 }
 
-.introduction_section_content{
+.introduction_section_content {
   display: flex;
   height: 100%;
   width: 25%;
@@ -21,17 +21,17 @@
   border-radius: 10px 0 0 10px;
 }
 
-.introduction_section_content h2{
+.introduction_section_content h2 {
   font-size: 3rem;
   color: white;
 }
 
-.introduction_section_content p{
+.introduction_section_content p {
   font-size: 1.5rem;
   color: white;
 }
 
-.main_paragraph{
+.main_paragraph {
   display: inherit;
   height: 40%;
   flex-direction: inherit;
@@ -39,14 +39,60 @@
   align-items: center;
 }
 
-.introduction_section_content .main_paragraph p{
+.introduction_section_content .main_paragraph p {
   color: wheat;
 }
 
-.introduction_section_content .main_paragraph a{
+.introduction_section_content .main_paragraph a {
   display: inherit;
   height: 100%;
   width: 100%;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+}
+
+.introduction_section_content .main_paragraph a:hover {
+  background-color: hsla(189, 100%, 24%, 0.356);
+}
+
+.secondery_content {
+  display: flex;
+  height: 44.5%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.secondery_content .introduction_section_content {
+  border-radius: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #e0bf1b;
+}
+
+.secondery_content .introduction_section_content p, .secondery_content .introduction_section_content h2{
+  color: #3f3f3f;
+  font-weight: bold;
+}
+
+.secondery_content .open_form {
+  background-color: #e6e3e3;
+}
+
+.secondery_content .open_form button{
+  height: 20%;
+  width: 30%;
+  border: none;
+  border-radius: 50px;
+  background-color: #3f3f3f;
+  color: #e6e3e3;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.secondery_content .open_form button:hover{
+  background-color: #e0bf1b;
+  color: #3f3f3f;
 }

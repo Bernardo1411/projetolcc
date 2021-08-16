@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 import ReactDOM from "react-dom";
-import Image from 'next/image';
+import Image from "next/image";
 
 import Backdrop from "../ui/backdrop/backdrop";
 
@@ -26,21 +26,30 @@ function Home() {
           <div className={styles.main_paragraph}>
             <p>Acesse a nossa calculadora para saber o seu IMC:</p>
             <a href="#secondery_content">
-            <Image src="/images/icon-157361_1280.png" width="150px" height="150px"/>
+              <Image
+                src="/images/icon-157361_1280.png"
+                width="150px"
+                height="150px"
+              />
             </a>
           </div>
         </div>
       </section>
-      <section id="secondery_content">
-        <div>Você está pronto para mudar seus hábitos?</div>
-        <div>
+      <section id="secondery_content" className={styles.secondery_content}>
+        <div className={styles.introduction_section_content}>
+          <Image src="/images/963395.png" height="300px" width="300px" />
+          <p>A melhor calculadora de IMC do Brasil!</p>
+        </div>
+        <div
+          className={`${styles.introduction_section_content} ${styles.open_form}`}
+        >
           <h2>Pronto para calcular o seu IMC?</h2>
-          <button onClick={openFormHandler}>Calcular</button>
+          <button onClick={openFormHandler}>Sim!</button>
         </div>
       </section>
       {openForm &&
         ReactDOM.createPortal(
-          <Backdrop />,
+          <Backdrop closeForm={openFormHandler} />,
           document.getElementById("backdropDestiny")
         )}
     </Fragment>

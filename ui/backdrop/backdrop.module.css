@@ -1,0 +1,11 @@
+.backdrop{
+    display: flex;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 12;
+    background: rgba(206, 206, 206, 0.705);
+    justify-content: center;
+    align-items: center;
+}

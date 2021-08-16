@@ -1,13 +1,21 @@
 import { Fragment } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
-import styles from './layout.module.css';
+import styles from "./layout.module.css";
 
 function Layout(props) {
   return (
     <Fragment>
       <nav className={styles.main_header}>
-      <h1>IMC</h1>
+        <h1>
+          IMC{" "}
+          <Image
+            src="/images/calculator-svgrepo-com.svg"
+            height="25px"
+            width="25px"
+          />
+        </h1>
         <ul className={styles.nav_list}>
           <li>
             <Link href="/">
@@ -22,11 +30,14 @@ function Layout(props) {
         </ul>
       </nav>
       <main className={styles.main_page}>{props.children}</main>
-      <footer>
-        <h3>
-          Receba nossas notificações e fique por dentro de todas as dicas sobre
-          emagrecimento
-        </h3>
+      <footer className={styles.page_footer}>
+        <ul className={styles.nav_list}>
+          <li>Nossos princípios: </li>
+          <li>Confiança</li>
+          <li>Informação</li>
+          <li>Saúde</li>
+          <li>Lazer</li>
+        </ul>
       </footer>
     </Fragment>
   );

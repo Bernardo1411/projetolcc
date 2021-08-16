@@ -3,8 +3,10 @@ import { useRouter } from "next/dist/client/router";
 
 import userContext from "../../store/user-context";
 
+import styles from "./form.module.css";
+
 function form(props) {
-  const { email, password, check, birthday, height, weight } = props;
+  const { email, password, check, birthday, height, weight, title, message, showClose} = props;
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -19,7 +21,7 @@ function form(props) {
 
   const submitInputHandler = (event) => {
     event.preventDefault();
-    if (!router.pathname.includes("imc")) router.push("imc");
+    if (!router.pathname.includes("imc")) router.replace("/imc");
 
     ctxUser.submitForm({
       email: emailRef.current?.value || ctxUser.email,
@@ -32,56 +34,64 @@ function form(props) {
   };
 
   return (
-    <section>
-      <div>
-        <h1>Your Data</h1>
-        <p>Insert your data in order to proceed</p>
+    <section className={styles.section_form}>
+      <div className={styles.section_form_title}>
+        <h1>{title}</h1>
+        <p>
+          {message}
+        </p>
       </div>
-      <div>
-        <form onSubmit={submitInputHandler}>
-          {birthday && (
-            <div>
-              <label htmlFor="birthday">Data de nascimento</label>
-              <input type="date" id="birthday" required ref={birthdayRef} />
-            </div>
-          )}
-          {height && (
-            <div>
-              <label htmlFor="height">Altura (cm)</label>
-              <input
-                type="number"
-                id="height"
-                required
-                ref={heightRef}
-                min="30"
-                max="250"
-              />
-            </div>
-          )}
-          {weight && (
-            <div>
-              <label htmlFor="weight">Peso (kg)</label>
-              <input
-                type="number"
-                id="weight"
-                required
-                ref={weightRef}
-                min="1"
-                max="750"
-              />
-            </div>
-          )}
+      <div className={styles.section_form_div}>
+        <form
+          onSubmit={submitInputHandler}
+          className={styles.section_form_form}
+        >
+          <div className={styles.personal_data}>
+            {birthday && (
+              <div>
+                <label htmlFor="birthday">Data de nascimento: </label>
+                <input type="date" id="birthday" required ref={birthdayRef} />
+              </div>
+            )}
+            {height && (
+              <div>
+                <label htmlFor="height">Altura (cm): </label>
+                <input
+                  type="number"
+                  id="height"
+                  required
+                  ref={heightRef}
+                  min="30"
+                  max="250"
+                />
+              </div>
+            )}
+            {weight && (
+              <div>
+                <label htmlFor="weight">Peso (kg): </label>
+                <input
+                  type="number"
+                  id="weight"
+                  required
+                  ref={weightRef}
+                  min="1"
+                  max="750"
+                />
+              </div>
+            )}
+          </div>
           {email && (
-            <div>
-              <label htmlFor="email">E-mail</label>
+            <div className={styles.form_label}>
+              <label htmlFor="email">E-mail: </label>
               <input type="email" id="email" required ref={emailRef} />
             </div>
           )}
           {password && (
-            <div>
-              <label htmlFor="passowrd">Password</label>
+            <div className={styles.form_label}>
+              <label htmlFor="passowrd">Password: </label>
               <input
                 type="password"
+                className={styles.password}
                 id="password"
                 required
                 ref={passwordRef}
@@ -91,7 +101,7 @@ function form(props) {
             </div>
           )}
           {check && (
-            <div>
+            <div className={styles.check_input}>
               <input type="checkbox" id="check" name="true" ref={checkRef} />
               <label htmlFor="check">
                 Gostaria de me manter atualizado quanto aos melhores produtos
@@ -99,7 +109,12 @@ function form(props) {
               </label>
             </div>
           )}
-          <button>Enviar</button>
+          <div className={styles.group_button}>
+            <button className={styles.send_button}>Enviar</button>
+            {showClose && <button className={styles.send_button} onClick={props.closeForm}>
+              Sair
+            </button>}
+          </div>
         </form>
       </div>
     </section>
