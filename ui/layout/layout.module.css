@@ -66,11 +66,21 @@
 
 .page_footer {
   display: flex;
-  height: 10%;
+  height: 8%;
   border-radius: 0 0 5px 5px;
   border-top: outset;
   background-color: #f6f6f6;
   justify-content: flex-start;
   align-items: center;
   font-size: 1.2rem;
+}
+
+@media (max-width: 1050px) {
+  .main_header {
+    font-size: 1.28rem;
+  }
+
+  .page_footer {
+    justify-content: center;
+  }
 }

@@ -6,7 +6,17 @@ import userContext from "../../store/user-context";
 import styles from "./form.module.css";
 
 function Form(props) {
-  const { email, password, check, birthday, height, weight, title, message, showClose} = props;
+  const {
+    email,
+    password,
+    check,
+    birthday,
+    height,
+    weight,
+    title,
+    message,
+    showClose,
+  } = props;
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -37,9 +47,7 @@ function Form(props) {
     <section className={styles.section_form}>
       <div className={styles.section_form_title}>
         <h1>{title}</h1>
-        <p>
-          {message}
-        </p>
+        <p>{message}</p>
       </div>
       <div className={styles.section_form_div}>
         <form
@@ -111,9 +119,11 @@ function Form(props) {
           )}
           <div className={styles.group_button}>
             <button className={styles.send_button}>Enviar</button>
-            {showClose && <button className={styles.send_button} onClick={props.closeForm}>
-              Sair
-            </button>}
+            {showClose && (
+              <button className={styles.send_button} onClick={props.closeForm}>
+                Sair
+              </button>
+            )}
           </div>
         </form>
       </div>

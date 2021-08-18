@@ -1,6 +1,7 @@
 html {
-  height: 160%;
+  height: 170%;
   width: 100%;
+  scroll-behavior: smooth;
 }
 
 body {

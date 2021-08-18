@@ -45,6 +45,7 @@ function Home() {
         >
           <h2>Pronto para calcular o seu IMC?</h2>
           <button onClick={openFormHandler}>Sim!</button>
+          <Image src="/images/3769406.png" height="200px" width="200px" />
         </div>
       </section>
       {openForm &&

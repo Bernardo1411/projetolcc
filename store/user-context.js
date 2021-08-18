@@ -28,7 +28,7 @@ export function UserContextProvider(props) {
     formData.weight && setWeight(formData.weight);
   };
 
-  const CalcIMC = () => weight/((height/100)**2);
+  const CalcIMC = () => Math.floor(weight/((height/100)**2));
 
   const context = {
     email,
