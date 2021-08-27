@@ -1,49 +1,17 @@
 import { useContext, useEffect, useState } from "react";
-import { useRouter } from "next/dist/client/router";
 
 import userContext from "../../store/user-context";
 import Form from "../../components/form/form";
 
 import styles from "./imc.module.css";
+import userFetchingData from "../api/userData";
 
-const imcs = [
-  {
-    situation: "Abaixo do peso",
-    minIMC: 0,
-    maxIMC: 18.49,
-    imcStyle: "imc_low",
-  },
-  {
-    situation: "Peso normal",
-    minIMC: 18.49,
-    maxIMC: 24.99,
-    imcStyle: "imc_normal",
-  },
-  {
-    situation: "Acima do peso",
-    minIMC: 24.99,
-    maxIMC: 29.99,
-    imcStyle: "imc_high",
-  },
-  {
-    situation: "Obesidade",
-    minIMC: 29.99,
-    maxIMC: 40,
-    imcStyle: "imc_obesity",
-  },
-  {
-    situation: "Obesidade mórbida",
-    minIMC: 40,
-    maxIMC: 1000,
-    imcStyle: "imc_morbid",
-  },
-];
-
-function IMC() {
+function IMC(props) {
   const [situationState, setSituationState] = useState("");
   const [imcStyleState, setImcStyleState] = useState("");
   const ctxUser = useContext(userContext);
-  const router = useRouter();
+
+  const imcs = props.imcData;
 
   const { height, weight, CalcIMC } = ctxUser;
   const imc = imcs.filter(
@@ -52,7 +20,7 @@ function IMC() {
   const { situation = "", imcStyle = "" } = imc || {};
 
   useEffect(() => {
-    if (!ctxUser.email) router.replace("/");
+    //if (!ctxUser.email) router.replace("/");
   }, []);
 
   useEffect(() => {
@@ -88,6 +56,17 @@ function IMC() {
       </div>
     </section>
   );
+}
+
+export async function getStaticProps(){
+  const imcData = await userFetchingData();
+
+  return {
+    props: {
+      imcData
+    },
+    revalidate: 86400
+  }
 }
 
 export default IMC;

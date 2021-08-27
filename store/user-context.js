@@ -8,7 +8,7 @@ const userContext = createContext({
   height: 0,
   weight: 0,
   submitForm: () => {},
-  CalcIMC: () => {}
+  CalcIMC: () => {},
 });
 
 export function UserContextProvider(props) {
@@ -28,7 +28,7 @@ export function UserContextProvider(props) {
     formData.weight && setWeight(formData.weight);
   };
 
-  const CalcIMC = () => Math.floor(weight/((height/100)**2));
+  const CalcIMC = () => Math.floor(weight / (height / 100) ** 2);
 
   const context = {
     email,
@@ -38,7 +38,7 @@ export function UserContextProvider(props) {
     height,
     weight,
     submitForm,
-    CalcIMC
+    CalcIMC,
   };
 
   return (
