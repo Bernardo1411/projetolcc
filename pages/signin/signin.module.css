@@ -1,0 +1,10 @@
+.login_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 52.3%;
+    width: 100%;
+
+    background-image: url('/images/salad-2756467_1920.jpg');
+}

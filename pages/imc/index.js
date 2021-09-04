@@ -1,15 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } 
+from "react";
+import { useRouter } from "next/dist/client/router";
 
 import userContext from "../../store/user-context";
 import Form from "../../components/form/form";
 
 import styles from "./imc.module.css";
-import userFetchingData from "../api/userData";
+import {userFetchingData} from "../api/userData";
 
 function IMC(props) {
   const [situationState, setSituationState] = useState("");
   const [imcStyleState, setImcStyleState] = useState("");
   const ctxUser = useContext(userContext);
+
+  const router = useRouter();
 
   const imcs = props.imcData;
 
@@ -20,7 +24,7 @@ function IMC(props) {
   const { situation = "", imcStyle = "" } = imc || {};
 
   useEffect(() => {
-    //if (!ctxUser.email) router.replace("/");
+    if (!ctxUser.email) router.replace("/");
   }, []);
 
   useEffect(() => {

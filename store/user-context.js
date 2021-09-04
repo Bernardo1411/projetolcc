@@ -5,8 +5,8 @@ const userContext = createContext({
   password: "",
   check: "",
   birthday: "",
-  height: 0,
-  weight: 0,
+  height: [],
+  weight: [],
   submitForm: () => {},
   CalcIMC: () => {},
 });
@@ -19,13 +19,36 @@ export function UserContextProvider(props) {
   const [height, setheight] = useState(0);
   const [weight, setWeight] = useState(0);
 
+  const postData = async (userData) => {
+    const response = await fetch("/api/userData", {
+      method: "POST",
+      body: JSON.stringify(userData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    //console.log(data);
+  };
+
   const submitForm = (formData) => {
     formData.email && setEmail(formData.email);
-    formData.password && setPassword(formData.password);
+    formData.email && setPassword(formData.password);
     formData.check && setCheck(formData.check);
     formData.birthday && setBirthday(formData.birthday);
     formData.height && setheight(formData.height);
     formData.weight && setWeight(formData.weight);
+
+    postData({
+      email: formData.email,
+      password: formData.password,
+      check: formData.check,
+      birthday: formData.birthday,
+      height: [formData.height],
+      weight: [formData.weight],
+    });
   };
 
   const CalcIMC = () => Math.floor(weight / (height / 100) ** 2);
